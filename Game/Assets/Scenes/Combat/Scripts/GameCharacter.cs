@@ -6,7 +6,7 @@ public class GameCharacter : MonoBehaviour{
     Combat c;
 
     // STATS
-    int HP = 100;
+    public int HP = 100;
     int vitality = 100;
     int armor = 5;
     int strength = 10;
