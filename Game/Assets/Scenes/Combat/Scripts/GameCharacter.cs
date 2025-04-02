@@ -54,11 +54,15 @@ public class GameCharacter : MonoBehaviour{
 
     }
 
-    void OnMouseDown(){
+    void OnMouseDown()
+    {
+        if (c.GetCurrentCharacter() == this)
+        {
+            Debug.Log("You cannot attack yourself!");
+            return;
+        }
 
-        if(c != null)
-            c.CharacterClicked(this);
-
+        c.CharacterClicked(this);
     }
 
     public bool UseSkill(GameCharacter target){

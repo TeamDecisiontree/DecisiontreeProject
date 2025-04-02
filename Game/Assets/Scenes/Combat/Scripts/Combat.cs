@@ -58,7 +58,7 @@ public class Combat : MonoBehaviour{
 
     }
 
-    GameCharacter GetCurrentCharacter(){
+    public GameCharacter GetCurrentCharacter(){
 
         GameCharacter current = null;
 
@@ -107,19 +107,29 @@ public class Combat : MonoBehaviour{
 
     }
 
-    public void CharacterClicked(GameCharacter clicked){
-
-        if(currentC == null)
+    public void CharacterClicked(GameCharacter clicked)
+    {
+        if (currentC == null)
             currentC = GetCurrentCharacter();
 
-        if(!currentC.UseSkill(clicked)){
+        // Get the selected damage from the AbilityClickButton (default 10 if no button clicked)
+        int selectedDamage = AbilityClickButton.selectedDamageGlobal;
+
+        // Apply damage to the clicked character
+        clicked.TakeDamage(selectedDamage);
+        Debug.Log(currentC.gameObject.name + " attacked " + clicked.gameObject.name + " for " + selectedDamage + " damage!");
+
+        // Reset damage back to default (10) after an attack
+        AbilityClickButton.selectedDamageGlobal = 10;
+
+        if (clicked == currentC)
+        {
             print("it failed :(");
             return;
         }
 
+        // Move to the next turn
         turn = (turn + 1) % (enemies.Count + 1);
         currentC = GetCurrentCharacter();
-
     }
-
 }
