@@ -639,6 +639,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 4566980957986256734, guid: 86422ab414f0293409b6742ab03c10f4, type: 3}
   healthBarPrefab: {fileID: 890571365804766681, guid: de53d4faa3a2cb547a557d3978c5a3f4, type: 3}
   marker: {fileID: 6787740618812977528, guid: 91eb33aabfa92344db9d7d5b9ddd2602, type: 3}
+  targeting: {fileID: 635128218622116287, guid: 69dac99111e378d4a8f0fc4505f0b0f2, type: 3}
 --- !u!1 &1086763922
 GameObject:
   m_ObjectHideFlags: 0
