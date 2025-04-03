@@ -3,19 +3,9 @@ using UnityEngine;
 public class Punch : Skill{
     
     GameCharacter gc;
-    string name;
-    float power;
-    int manaCost;
-    int skillCost;
 
-    public Punch(GameCharacter gc) : base(gc){
-
+    public Punch(GameCharacter gc) : base(gc, "Punch", 1, 0, 0){
         this.gc = gc;
-        this.name = "Punch";
-        this.power = 1;
-        this.manaCost = 0;
-        this.skillCost = 0;
-        
     }
 
     public override bool Effect(GameCharacter target){
