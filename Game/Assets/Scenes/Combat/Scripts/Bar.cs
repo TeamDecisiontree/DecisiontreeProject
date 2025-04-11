@@ -10,7 +10,7 @@ public class Bar : MonoBehaviour
     public Slider slider;               
     public TMP_Text valueText;         
 
-    public virtual void Init()
+    public void Init()
     {
         if (target == null)
         {
@@ -37,9 +37,6 @@ public class Bar : MonoBehaviour
         if (slider == null || valueText == null || max == 0) return;
 
         current = Mathf.Clamp(current, 0, max); // To keep current between 0 and the max value
-
-        //slider.maxValue = max;
-        //slider.value = current;
 
         float percentage = (float)current / max;
         slider.value = percentage;
