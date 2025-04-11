@@ -54,6 +54,10 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+*.meta
+
+# EXCLUDE FROM IGNORE -> DO NOT IGNORE
+!*/"TextMesh Pro"/*
 
 # Unity3D generated file on crash reports
 sysinfo.txt
