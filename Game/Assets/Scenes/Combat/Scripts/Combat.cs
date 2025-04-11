@@ -132,6 +132,7 @@ public class Combat : MonoBehaviour{
                 }
 
                 Destroy(target.healthBar.gameObject);
+                Destroy(target.manaBar.gameObject);
                 Destroy(target.gameObject);
 
                 //All enemies are dead: Change to the "Win Screen".
