@@ -1,36 +1,53 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Intro : SceneScript {
-    public GameObject dialogueBox;
-    public GameObject mainStoryTrigger;
-    private TextMeshProUGUI nameText;
-    private TextMeshProUGUI dialogueText;
+
+    public override void LoadCutscene(GameObject dbgo){
+        
+        db = Instantiate(dbgo, GameObject.Find("Canvas").transform).GetComponent<DialogueBox>();
+        db.Init(this);
+
+    }
 
     public override IEnumerator RunAnimation() {
-        //Add dialogue box to scene inside of "Canvas" object.
-        dialogueBox = Instantiate(dialogueBox, GameObject.FindGameObjectWithTag("Canvas").transform);
 
-        //Get name and dialogue text components.
-        nameText = dialogueBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        dialogueText = dialogueBox.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        int frame = 300;
 
-        //Set some public attributes of the dialogue manager.
-        DialogueManager dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
-        dialogueManager.nameText = nameText;
-        dialogueManager.dialogueText = dialogueText;
+        while(frame-- > 0)
+            yield return new WaitForSeconds(1/60);
 
-        //Start main story dialogue.
-        mainStoryTrigger = Instantiate(mainStoryTrigger);
+        db.Enqueue(@"
+        Narrator§It all started that day. The 12th of March, 2078. Some call it “The Miracle”, while others call it “The Disaster”.
+        ");
+        db.Enqueue(@"
+        Narrator§Suddenly, every human on Earth became able to use magic. Some could grow plants quicker, some could light candles from a distance; Some could turn a town into a crater the size of Manhattan.
+        ");
+        db.Enqueue(@"
+        Narrator§The most powerful among them became eager to use their own powers. As a result, the biggest revolution in human history began. It was complete anarchy. 
+        ");
+        db.Enqueue(@"
+        Narrator§All the countries in the world tried to stop it. Air raids were called, giant battlefields were erected, and many lives were lost. After the entirety of France was taken over, the first nuke was launched. Then came another. And another.
+But it didn't matter.
+        ");
+        db.Enqueue(@"
+        Narrator§The “Law of the Jungle“ is still very much in effect, but instead of allowing just anyone to go and remove the leader of a country, regular “Arena“ battles are held. 
+        ");
+        db.Enqueue(@"
+        Narrator§Anyone can enter the Arena, and the final victor is deemed the “strongest“, and thus is granted the right to lead everyone else in power.
+        ");
 
-        //Set dialogue box "continue" button to the correct onClick functionality
-        dialogueBox.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => dialogueManager.DisplayNextSentence());
+        db.ContinueDialogue();
+        waitingForDialogue = true;
 
-        while(dialogueManager.dialogueActive){
+        while(waitingForDialogue)
             yield return null;
-        }
+
+        frame = 300;
+
+        while(frame-- > 0)
+            yield return new WaitForSeconds(1/60);
+
     }
 
 }
