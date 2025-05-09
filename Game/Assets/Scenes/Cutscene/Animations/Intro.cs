@@ -23,12 +23,12 @@ public class Intro : SceneScript {
 
         db.ContinueDialogue();
         yield return WaitForDialogue();
-        yield return new WaitForSeconds(2);
+        yield return WaitForSecs(1);
 
         
         //"TheNuke" image is set.
         bg.SetBG(1);
-        yield return new WaitForSeconds(1);
+        yield return WaitForSecs(0.5f);
 
         db.Enqueue(@"
         Narrator§All the countries in the world tried to stop it. Air raids were called, giant battlefields were erected, and many lives were lost. After the entirety of France was taken over, the first nuke was launched. Then came another. And another.
@@ -44,12 +44,12 @@ public class Intro : SceneScript {
 
         db.ContinueDialogue();
         yield return WaitForDialogue();
-        yield return new WaitForSeconds(2);
+        yield return WaitForSecs(1);
 
         //"raidSlums" image is set.
         bg.SetBG(2);
         db.MoveDialogueBox(0, 0);
-        yield return new WaitForSeconds(1);
+        yield return WaitForSecs(0.5f);
 
         db.Enqueue(@"
         Narrator§On one fateful day, Ynnos and his family were having dinner in their home at “The Slums”, inside the capital of “Kirderf”.
@@ -64,11 +64,11 @@ public class Intro : SceneScript {
         db.ContinueDialogue();
 
         yield return WaitForDialogue();
-        yield return new WaitForSeconds(2);
+        yield return WaitForSecs(1);
 
         //"[Not Decided]" image is set.
         bg.SetBG(3);
-        yield return new WaitForSeconds(1);
+        yield return WaitForSecs(0.5f);
 
         db.Enqueue(@"
         Narrator§Now, 10 years later, Ynnos had become a ‘Fighter’; One who fights in the Arena not for prestige or for power, but simply for the money. 
@@ -81,7 +81,7 @@ public class Intro : SceneScript {
         ");
         db.ContinueDialogue();
         yield return WaitForDialogue();
-        yield return new WaitForSeconds(2);
+        yield return WaitForSecs(1);
     }
 
 }

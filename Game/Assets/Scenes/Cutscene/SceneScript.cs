@@ -6,6 +6,7 @@ public abstract class SceneScript : MonoBehaviour {
     [HideInInspector] public DialogueBox db;
     [HideInInspector] public Backgrounds bg;
     [HideInInspector] public bool waitingForDialogue;
+    [HideInInspector] public bool skipping = false;
 
     public void LoadCutscene(DialogueBox db, Backgrounds bg){
 
@@ -14,13 +15,20 @@ public abstract class SceneScript : MonoBehaviour {
 
     }
 
+    public void SkipCutscene(){
+        if (!skipping) skipping = true;
+    }
+
+    public IEnumerator WaitForSecs(float seconds){
+        yield return new WaitForSeconds(skipping ? 0 : seconds);
+    }
+
     public abstract IEnumerator RunAnimation();
 
     public IEnumerator WaitForDialogue(){
-
-        while(waitingForDialogue)
+        while(waitingForDialogue && !skipping){
             yield return null;
-
+        }
     }
 
 }
