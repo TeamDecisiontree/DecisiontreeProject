@@ -213,6 +213,7 @@ public class GameCharacter : MonoBehaviour{
                 skills[selectedSkill].SkillAnimation(posOfTarget, this, spriteManager);
             }   
         }
+        this.transform.GetChild(0).GetChild(6).transform.localPosition = Vector3.zero;
 
         return skill;
 
